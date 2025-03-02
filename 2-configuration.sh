@@ -117,13 +117,9 @@ EDITOR=vim sudo -E visudo
 usermod -aG wheel $username
 
 # ------------------------------------------------------
-# Copiamos los scripts de instalacion el directorio home 
+# Copiamos el scripts de instalacion al directorio home 
 # ------------------------------------------------------
-cp /Arch_Base/3-yay.sh /home/$username
-cp /Arch_Base/4-zram.sh /home/$username
-cp /Arch_Base/5-timeshift.sh /home/$username
-cp /Arch_Base/6-preload.sh /home/$username
-cp /Arch_Base/snapshot.sh /home/$username
+ cp -rp /root/Arch_Base /home/$username
 
 clear
 echo "     _                   "

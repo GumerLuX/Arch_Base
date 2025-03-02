@@ -60,11 +60,6 @@ cat /mnt/etc/fstab
 # ------------------------------------------------------
 mkdir /mnt/Arch_Base
 cp 2-configuration.sh /mnt/Arch_Base/
-cp 3-yay.sh /mnt/Arch_Base/
-cp 4-zram.sh /mnt/Arch_Base/
-cp 5-timeshift.sh /mnt/Arch_Base/
-cp 6-preload.sh /mnt/Arch_Base/
-cp snapshot.sh /mnt/Arch_Base/
 
 # ------------------------------------------------------
 # Chroot al sistema instalado
