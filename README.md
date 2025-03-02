@@ -1,6 +1,5 @@
-Instalacion de ArcLinux con scripts.
+Instalacion de archLinux
+El script de Mi_install_sindo.sh 
+Instala solo el sistema base en idioma español.
 
-Instalacion base antes de instalar un escritorio
-
-
-Instalacion base antes de instalar un escritorio
+Copiando los archivos de instalacion a usuario para configurar posteriormente
