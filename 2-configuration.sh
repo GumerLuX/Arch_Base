@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC1017
 
 #   ____             __ _                       _   _             
 #  / ___|___  _ __  / _(_) __ _ _   _ _ __ __ _| |_(_) ___  _ __  
@@ -25,7 +26,7 @@ hwclock --systohc
 # Actualizar reflector
 # ------------------------------------------------------
 echo "Start reflector..."
-reflector -c "Germany,France,Spain" -p https -a 3 --sort rate --save /etc/pacman.d/mirrorlist
+reflector -c "Germany,France,Spain" -p https -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 # ------------------------------------------------------
 # Sincronizar mirrors
@@ -43,6 +44,22 @@ pacman --noconfirm -S grub xdg-desktop-portal-wlr efibootmgr networkmanager netw
 echo "es_ES.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=es_ES.UTF-8" >> /etc/locale.conf
+
+# ------------------------------------------------------
+# Set Keyboard
+# ------------------------------------------------------
+echo "FONT=ter-v18b" >> /etc/vconsole.conf
+echo "KEYMAP=$keyboardlayout" >> /etc/vconsole.conf
+
+# ------------------------------------------------------
+# Set hostname and localhost
+# ------------------------------------------------------
+echo "$hostname" >> /etc/hostname
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1       localhost" >> /etc/hosts
+echo "127.0.1.1 $hostname.localdomain $hostname" >> /etc/hosts
+clear
+
 
 # ------------------------------------------------------
 # Establecer contraseña de root
@@ -88,6 +105,7 @@ mkinitcpio -p linux
 # Agregamos usuario a el grupo 'wheel'
 # ------------------------------------------------------
 clear
+echo Defaults  env_reset,pwfeedback >> /etc/sudoers
 echo "Uncomment %wheel group in sudoers (around line 85):"
 echo "Before: #%wheel ALL=(ALL:ALL) ALL"
 echo "After:  %wheel ALL=(ALL:ALL) ALL"
@@ -99,11 +117,11 @@ usermod -aG wheel $username
 # ------------------------------------------------------
 # Copiamos los scripts de instalacion el directorio home 
 # ------------------------------------------------------
-cp /archinstall/3-yay.sh /home/$username
-cp /archinstall/4-zram.sh /home/$username
-cp /archinstall/5-timeshift.sh /home/$username
-cp /archinstall/6-preload.sh /home/$username
-cp /archinstall/snapshot.sh /home/$username
+cp /Arch_Base/3-yay.sh /home/$username
+cp /Arch_Base/4-zram.sh /home/$username
+cp /Arch_Base/5-timeshift.sh /home/$username
+cp /Arch_Base/6-preload.sh /home/$username
+cp /Arch_Base/snapshot.sh /home/$username
 
 clear
 echo "     _                   "
@@ -122,7 +140,3 @@ echo "- Aplicacion de instantanea: snapshot.sh"
 echo ""
 echo "Escriva: exit & shutdown (shutdown -h now) para apagar la computadora,retire el medio de instalacion y empiece de nuevo."
 echo "Importante: active el WIFE despues de reiniciar con 'nmtui'."
-
-
-
-

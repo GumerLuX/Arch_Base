@@ -1,12 +1,18 @@
 #!/bin/bash
+# shellcheck disable=SC1017
+
+
 clear
 cfdisk
+clear
+
 # ------------------------------------------------------
 # Introduce el nombre de lasparticiones
 # ------------------------------------------------------
 lsblk
 read -p "Enter the name of the EFI partition (eg. sda1): " sda1
 read -p "Enter the name of the ROOT partition (eg. sda2): " sda2
+clear
 
 # ------------------------------------------------------
 # Sincronizar la hora de la maquina
