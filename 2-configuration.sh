@@ -119,7 +119,7 @@ usermod -aG wheel $username
 # ------------------------------------------------------
 # Copiamos el scripts de instalacion al directorio home 
 # ------------------------------------------------------
- cp -rp /root/Arch_Base /home/$username
+ cp -rp /root/arch_base /home/$username
 
 clear
 echo "     _                   "
